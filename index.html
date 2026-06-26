@@ -36,13 +36,14 @@
             min-height: 100vh;
         }
 
-        /* Navegação Fixa no Topo */
+        /* Navegação Fixa no Topo Corrigida */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             padding: 20px 50px;
-            background: rgba(0, 0, 0, 0.8);
+            /* Mudamos para o mesmo azul escuro do fundo com 90% de opacidade */
+            background: rgba(13, 33, 54, 0.9); 
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
@@ -117,7 +118,7 @@
             text-align: center;
             align-items: center;
             justify-content: flex-start;
-            padding-top: 80px;
+            padding-top: 100px;
             
             /* ESSAS DUAS LINHAS NOVAS REMOVEM O BURACO EMBAIXO DO BOTÃO */
             min-height: auto; /* Remove a obrigação de ocupar a tela toda */
@@ -281,6 +282,32 @@
     margin: 5px auto; /* Dá um respiro em cima e embaixo, e centraliza perfeitamente */
     display: block; /* Garante que o ícone fique na sua própria linha */
 }
+
+        /* Botão do WhatsApp Customizado */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px; /* Distância do fundo da tela */
+            right: 30px; /* Distância da direita */
+            width: 65px; /* Tamanho do seu ícone */
+            height: 65px;
+            z-index: 9999;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        /* Garante que a sua imagem caiba perfeitamente no espaço */
+        .btn-whatsapp img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Impede que a imagem fique esticada */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Cria uma sombrinha elegante na sua imagem */
+        }
+
+        /* Efeito ao passar o mouse */
+        .btn-whatsapp:hover {
+            transform: scale(1.1); /* Dá uma leve crescida */
+        }
+
 /* =========================================
    REGRAS PARA CELULAR (Design Responsivo)
    ========================================= */
@@ -288,7 +315,7 @@
     /* 1. Arruma o cabeçalho para caber na tela */
     header {
         flex-direction: column; /* Coloca a logo em cima e o menu embaixo */
-        padding: 15px 10px;
+        padding: 10px 10px;
         gap: 15px;
     }
     
@@ -304,12 +331,12 @@
 
     /* 2. Arruma os textos que estavam grandes demais */
     #inicio h1 {
-        font-size: 2.5rem; /* Diminui o nome principal */
+        font-size: 2.0rem; /* Diminui o nome principal */
     }
     
     h2 {
         font-size: 1.8rem; /* Diminui os títulos das seções */
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
     
     #inicio h3 {
@@ -324,20 +351,28 @@
 
     /* 3. Arruma o espaçamento das páginas para o cabeçalho não tampar o texto */
     section {
-        padding: 160px 5% 60px 5%; 
+        padding: 140px 5% 60px 5%; 
     }
 
     /* 4. Arruma o tamanho da sua foto de perfil */
     .perfil-container img {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
     }
 
     /* 5. Organiza os Cards empilhados com um respiro bonito entre eles */
     .grid-container {
         grid-template-columns: 1fr; /* Força a ficar um embaixo do outro perfeitamente */
-        gap: 25px; /* Espaço elegante entre os cards */
+        gap: 2px; /* Espaço elegante entre os cards */
         padding: 0 10px;
+    }
+
+    /* 6. Botão Flutuante do WhatsApp (Celular) */
+    .btn-whatsapp {
+        bottom: 20px;
+        right: 20px;
+        width: 55px; /* Tamanho do ícone no celular */
+        height: 55px;
     }
 }
     </style>
@@ -345,13 +380,12 @@
 <body>
 
     <header>
-        <a href="#inicio" class="logo">David</a>
+        <a href="#inicio" class="logo"></a>
         <nav>
             <ul>
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Sobre mim</a></li>
-                <li><a href="#clientes">Clientes</a></li>
-                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#servicos">Clientes</a></li>
                 <li><a href="#contatos">Contatos</a></li>
             </ul>
         </nav>
@@ -374,21 +408,16 @@
         
         <!-- Bloco da Foto Redonda e Nome -->
         <div class="perfil-container">
-            <!-- Cole o link do Google Drive aqui no src="" -->
-            <img src="https://i.ibb.co/LXcCmRvp/c373dc5c-4603-41f6-9fb8-e096b5bd6c8b.jpg" alt="c373dc5c-4603-41f6-9fb8-e096b5bd6c8b" border="0"></a>
+            <img src="https://i.ibb.co/LXcCmRvp/c373dc5c-4603-41f6-9fb8-e096b5bd6c8b.jpg" alt="David Edson">
             <h3>David Edson</h3>
         </div>
 
-        <p>Sou Representante Comercial da  AJM Comunicação Visual, empresa com mais de 35 anos de atuação no mercado, especializada em comunicação visual, fachadas e soluções que valorizam a imagem e a presença das marcas.
+        <p>Sou Representante Comercial da AJM Comunicação Visual, empresa com mais de 35 anos de atuação no mercado, especializada em comunicação visual, fachadas e soluções que valorizam a imagem e a presença das marcas.</p>
+        <p>Meu trabalho é compreender as necessidades de cada cliente e oferecer soluções personalizadas, unindo qualidade, funcionalidade e excelente custo-benefício. Busco construir relacionamentos de confiança por meio de um atendimento transparente, ágil e comprometido com resultados.</p>
+        <p>Valorizo a pontualidade, a excelência nos materiais utilizados e o acompanhamento de cada projeto, garantindo segurança e satisfação desde o primeiro contato até a entrega final.</p>
+        <p>Acredito que cada projeto representa uma oportunidade de fortalecer a identidade de uma empresa e contribuir para o crescimento dos negócios de meus clientes.</p>
+    </section>
 
-Meu trabalho é compreender as necessidades de cada cliente e oferecer soluções personalizadas, unindo qualidade, funcionalidade e excelente custo-benefício. Busco construir relacionamentos de confiança por meio de um atendimento transparente, ágil e comprometido com resultados.
-
-Valorizo a pontualidade, a excelência nos materiais utilizados e o acompanhamento de cada projeto, garantindo segurança e satisfação desde o primeiro contato até a entrega final.
-
-Acredito que cada projeto representa uma oportunidade de fortalecer a identidade de uma empresa e contribuir para o crescimento dos negócios de meus clientes.</p><h2></h2>
-        </section>
-
-    <!-- 3. Seção: Clientes -->
     <!-- 3. Seção: Serviços -->
     <section id="servicos">
         <h2>Nossos Serviços e Especialidades</h2>
@@ -438,21 +467,23 @@ Acredito que cada projeto representa uma oportunidade de fortalecer a identidade
         </div>
     </section>
     
-
     <section id="contatos">
         <h2>Vamos Conversar?</h2>
         <p>Pronto para iniciar seu próximo projeto? Entre em contato conosco para solicitarmos um orçamento detalhado.</p>
         <div class="contato-info">
             <p>Email: <a href="mailto:davidajmvisual@gmail.com">davidajmvisual@gmail.com</a></p>
             <p>WhtasApp: (11) 98217-2948</p>
-            <p>Fixo: (11) 3783-0434</p>
             <p>São Paulo, Zona Oeste</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Representante de Vendas. Todos os direitos reservados. .</p>
+        <p>&copy; 2026 . Todos os direitos reservados. .</p>
     </footer>
 
+    <!-- Botão Flutuante do WhatsApp com a sua Imagem -->
+    <a href="https://wa.me/5511982172948?text=Olá,%20vim%20pelo%20seu%20portfólio%20e%20gostaria%20de%20um%20orçamento!" target="_blank" class="btn-whatsapp">
+        <img src="https://i.ibb.co/zWW6y3ZH/whatsapp.png" alt="Fale comigo pelo WhatsApp">
+    </a>
 </body>
 </html>
